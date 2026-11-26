@@ -1,0 +1,17 @@
+{
+  "domain": "wp-table-builder",
+  "locale_data": {
+    "wp-table-builder": {
+      "": {
+        "domain": "wp-table-builder",
+        "plural_forms": "nplurals=2; plural=(n != 1);",
+        "lang": "bn_BD"
+      },
+      "Create Table": ["নতুন টেবিল"],
+      "All Tables": ["সকল টেবিল"],
+      "Add New": ["নতুন টেবিল"],
+      "Import": ["ইমপোর্ট"],
+      "Export": ["এক্সপোর্ট"]
+    }
+  }
+}

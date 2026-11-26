@@ -1,0 +1,97 @@
+{
+  "_common-D6svC7Nf.js": {
+    "file": "assets/common-D6svC7Nf.js",
+    "name": "common",
+    "imports": [
+      "_css-values-DkjxhOPi.js"
+    ]
+  },
+  "_corruption-B6RWpSnr.js": {
+    "file": "assets/corruption-B6RWpSnr.js",
+    "name": "corruption",
+    "imports": [
+      "_css-values-DkjxhOPi.js"
+    ]
+  },
+  "_css-values-DkjxhOPi.js": {
+    "file": "assets/css-values-DkjxhOPi.js",
+    "name": "css-values"
+  },
+  "_index-CqARgbaN.js": {
+    "file": "assets/index-CqARgbaN.js",
+    "name": "index",
+    "imports": [
+      "_corruption-B6RWpSnr.js",
+      "_css-values-DkjxhOPi.js"
+    ]
+  },
+  "_renderer-B_7tP3BV.js": {
+    "file": "assets/renderer-B_7tP3BV.js",
+    "name": "renderer",
+    "imports": [
+      "_css-values-DkjxhOPi.js",
+      "_corruption-B6RWpSnr.js"
+    ]
+  },
+  "src/editor-common.ts": {
+    "file": "assets/editor-common-cr3K2ukK.js",
+    "name": "editor-common",
+    "src": "src/editor-common.ts",
+    "isEntry": true,
+    "imports": [
+      "_index-CqARgbaN.js",
+      "_corruption-B6RWpSnr.js",
+      "_renderer-B_7tP3BV.js",
+      "_common-D6svC7Nf.js",
+      "_css-values-DkjxhOPi.js"
+    ]
+  },
+  "src/editor.scss": {
+    "file": "editor-style.css",
+    "src": "src/editor.scss",
+    "isEntry": true
+  },
+  "src/frontend/common.ts": {
+    "file": "assets/frontend-common-LCA52mL7.js",
+    "name": "frontend-common",
+    "src": "src/frontend/common.ts",
+    "isEntry": true,
+    "imports": [
+      "_css-values-DkjxhOPi.js",
+      "_common-D6svC7Nf.js"
+    ]
+  },
+  "src/frontend/index.ts": {
+    "file": "assets/frontend-script-DQ6hPJLl.js",
+    "name": "frontend-script",
+    "src": "src/frontend/index.ts",
+    "isEntry": true,
+    "imports": [
+      "_css-values-DkjxhOPi.js",
+      "_corruption-B6RWpSnr.js",
+      "_renderer-B_7tP3BV.js"
+    ]
+  },
+  "src/index.tsx": {
+    "file": "assets/editor-main-bFf_4oTK.js",
+    "name": "editor-main",
+    "src": "src/index.tsx",
+    "isEntry": true,
+    "imports": [
+      "_index-CqARgbaN.js",
+      "_corruption-B6RWpSnr.js",
+      "_css-values-DkjxhOPi.js"
+    ]
+  },
+  "src/public/i18n.ts": {
+    "file": "assets/editor-i18n-l0sNRNKZ.js",
+    "name": "editor-i18n",
+    "src": "src/public/i18n.ts",
+    "isEntry": true
+  },
+  "src/styles.scss": {
+    "file": "frontend-style.css",
+    "src": "src/styles.scss",
+    "isEntry": true
+  }
+}

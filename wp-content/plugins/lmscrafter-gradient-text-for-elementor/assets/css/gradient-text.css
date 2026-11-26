@@ -1,0 +1,389 @@
+/**
+ * Gradient Text for Elementor — Frontend Styles
+ *
+ * @package LMSC_GTE
+ * @since   1.0.0
+ * @version 2.0.0
+ */
+
+/* ──────────────────────────────────────────────
+   Gradient Text (Heading Widget)
+   Fallback: solid currentColor for browsers without
+   `background-clip: text`. The transparent text-fill
+   only applies when the feature is supported, so
+   non-webkit/old browsers see a real, readable color
+   instead of invisible text.
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-gradient-text {
+	display: inline-block;
+	color: var(--lmsc-gte-fallback-color, currentColor); /* Visible fallback. */
+	transition: background 0.3s ease;
+}
+
+.lmsc-gte-gradient-text-wrapper {
+	width: 100%;
+}
+
+.lmsc-gte-gradient-text-wrapper a {
+	display: inline-block;
+	text-decoration: none;
+	color: var(--lmsc-gte-fallback-color, currentColor);
+	transition: background 0.3s ease;
+}
+
+/* Keyboard focus state for linked gradient text. */
+.lmsc-gte-gradient-text-wrapper a:focus-visible {
+	outline: 2px solid var(--lmsc-gte-fallback-color, #333333);
+	outline-offset: 3px;
+	border-radius: 2px;
+}
+
+/* ──────────────────────────────────────────────
+   Gradient Text Editor (WYSIWYG Widget)
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-gradient-editor {
+	color: var(--lmsc-gte-fallback-color, currentColor); /* Visible fallback. */
+	transition: background 0.3s ease;
+}
+
+/* Apply the gradient-clip technique only where supported. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+	.lmsc-gte-gradient-text,
+	.lmsc-gte-gradient-text-wrapper a,
+	.lmsc-gte-gradient-editor,
+	.lmsc-gte-hl-gradient-text,
+	.lmsc-gte-hl-underline,
+	.lmsc-gte-hl-glow {
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+
+	.lmsc-gte-stroke-only {
+		-webkit-text-fill-color: transparent;
+		-webkit-text-stroke-width: var(--lmsc-gte-stroke-width, 2px);
+		-webkit-text-stroke-color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
+		paint-order: stroke fill;
+	}
+
+	.lmsc-gte-stroke-both {
+		-webkit-text-stroke-width: var(--lmsc-gte-stroke-width, 2px);
+		-webkit-text-stroke-color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
+		paint-order: stroke fill;
+	}
+
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-only .lmsc-gte-hl-gradient-text,
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-only .lmsc-gte-hl-underline,
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-only .lmsc-gte-hl-glow {
+		-webkit-text-fill-color: transparent;
+		-webkit-text-stroke-width: var(--lmsc-gte-stroke-width, 2px);
+		-webkit-text-stroke-color: transparent;
+		paint-order: stroke fill;
+	}
+
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-both .lmsc-gte-hl-gradient-text,
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-both .lmsc-gte-hl-underline,
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-both .lmsc-gte-hl-glow {
+		-webkit-text-stroke-width: var(--lmsc-gte-stroke-width, 2px);
+		-webkit-text-stroke-color: transparent;
+		paint-order: stroke fill;
+	}
+}
+
+/* Inline-styled highlight spans are emitted by the heading widget's
+   build_gradient_span(). Their inline styles bypass @supports, so on
+   browsers without background-clip: text those spans render as
+   invisible (color: transparent) text. The block below recovers them
+   to a readable state. !important is required because we are
+   overriding inline styles. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+	.lmsc-gte-hl-gradient-text,
+	.lmsc-gte-hl-underline,
+	.lmsc-gte-hl-glow,
+	.lmsc-gte-gradient-sunset,
+	.lmsc-gte-gradient-ocean,
+	.lmsc-gte-gradient-forest,
+	.lmsc-gte-gradient-fire,
+	.lmsc-gte-gradient-purple-rain,
+	.lmsc-gte-gradient-cherry-blossom,
+	.lmsc-gte-gradient-northern-lights,
+	.lmsc-gte-gradient-citrus,
+	.lmsc-gte-gradient-frost,
+	.lmsc-gte-gradient-rose-gold,
+	.lmsc-gte-gradient-midnight,
+	.lmsc-gte-gradient-candy,
+	.lmsc-gte-gradient-neon,
+	.lmsc-gte-gradient-peach,
+	.lmsc-gte-gradient-royal,
+	.lmsc-gte-gradient-bubblegum,
+	.lmsc-gte-gradient-aurora,
+	.lmsc-gte-gradient-cyber,
+	.lmsc-gte-gradient-warm-flame,
+	.lmsc-gte-gradient-mango {
+		color: currentColor !important;
+		-webkit-text-fill-color: currentColor !important;
+		background: none !important;
+		filter: none !important;
+	}
+
+	.lmsc-gte-hl-pill,
+	.lmsc-gte-hl-marker {
+		/* Keep the pill/marker visible by retaining the inline
+		   gradient as a real background, but force the foreground
+		   text color to remain readable. */
+		-webkit-text-fill-color: inherit !important;
+	}
+
+	.lmsc-gte-stroke-only,
+	.lmsc-gte-partial-mode.lmsc-gte-stroke-only .lmsc-gte-highlight {
+		-webkit-text-fill-color: var(--lmsc-gte-fallback-color, currentColor) !important;
+		color: var(--lmsc-gte-fallback-color, currentColor) !important;
+		-webkit-text-stroke-width: 0 !important;
+	}
+}
+
+/* Preserve list markers with gradient */
+.lmsc-gte-gradient-editor ul,
+.lmsc-gte-gradient-editor ol {
+	list-style-position: inside;
+}
+
+/* ──────────────────────────────────────────────
+   Hover States
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-gradient-text.lmsc-gte-has-hover:hover,
+.lmsc-gte-gradient-text-wrapper a.lmsc-gte-has-hover:hover,
+.lmsc-gte-gradient-editor.lmsc-gte-has-hover:hover {
+	background-image: var(--lmsc-gte-hover-gradient, var(--lmsc-gte-gradient)) !important;
+	transition: background 0.3s ease;
+}
+
+.lmsc-gte-partial-mode.lmsc-gte-has-hover:hover .lmsc-gte-highlight {
+	background-image: var(--lmsc-gte-hover-gradient, var(--lmsc-gte-gradient)) !important;
+}
+
+/* ──────────────────────────────────────────────
+   Animated Gradient
+   ────────────────────────────────────────────── */
+
+@keyframes lmsc-gte-gradient-flow-horizontal {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes lmsc-gte-gradient-flow-vertical {
+	0% {
+		background-position: 50% 0%;
+	}
+	50% {
+		background-position: 50% 100%;
+	}
+	100% {
+		background-position: 50% 0%;
+	}
+}
+
+@keyframes lmsc-gte-gradient-flow-diagonal {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+}
+
+.lmsc-gte-animated {
+	background-size: 200% 200% !important;
+}
+
+.lmsc-gte-partial-mode.lmsc-gte-animated .lmsc-gte-highlight {
+	background-size: 200% 200% !important;
+}
+
+.lmsc-gte-animated-horizontal:not(.lmsc-gte-partial-mode),
+.lmsc-gte-partial-mode.lmsc-gte-animated-horizontal .lmsc-gte-highlight {
+	animation: var(--lmsc-gte-animation-name, lmsc-gte-gradient-flow-horizontal) var(--lmsc-gte-animation-speed, 5s) var(--lmsc-gte-animation-easing, ease) var(--lmsc-gte-animation-iterations, infinite);
+	animation-play-state: var(--lmsc-gte-animation-play-state, running);
+}
+
+.lmsc-gte-animated-vertical:not(.lmsc-gte-partial-mode),
+.lmsc-gte-partial-mode.lmsc-gte-animated-vertical .lmsc-gte-highlight {
+	animation: var(--lmsc-gte-animation-name, lmsc-gte-gradient-flow-vertical) var(--lmsc-gte-animation-speed, 5s) var(--lmsc-gte-animation-easing, ease) var(--lmsc-gte-animation-iterations, infinite);
+	animation-play-state: var(--lmsc-gte-animation-play-state, running);
+}
+
+.lmsc-gte-animated-diagonal:not(.lmsc-gte-partial-mode),
+.lmsc-gte-partial-mode.lmsc-gte-animated-diagonal .lmsc-gte-highlight {
+	animation: var(--lmsc-gte-animation-name, lmsc-gte-gradient-flow-diagonal) var(--lmsc-gte-animation-speed, 5s) var(--lmsc-gte-animation-easing, ease) var(--lmsc-gte-animation-iterations, infinite);
+	animation-play-state: var(--lmsc-gte-animation-play-state, running);
+}
+
+.lmsc-gte-pause-on-interaction:hover,
+.lmsc-gte-pause-on-interaction:focus-visible,
+.lmsc-gte-pause-on-interaction:focus-within,
+.lmsc-gte-pause-on-interaction:hover .lmsc-gte-highlight,
+.lmsc-gte-pause-on-interaction:focus-within .lmsc-gte-highlight {
+	animation-play-state: paused !important;
+}
+
+/* ──────────────────────────────────────────────
+   Partial / Highlighted Text Mode
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-partial-mode {
+	background: none !important;
+	-webkit-background-clip: unset !important;
+	-webkit-text-fill-color: unset !important;
+	background-clip: unset !important;
+}
+
+/* ──────────────────────────────────────────────
+   Highlight Span Base
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-highlight {
+	transition: all 0.3s ease;
+}
+
+/* ──────────────────────────────────────────────
+   Highlight Effect: Underline (::after needs CSS)
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-highlight.lmsc-gte-hl-underline::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: var(--lmsc-gte-hl-underline-height, 4px);
+	background: var(--lmsc-gte-hl-gradient);
+	border-radius: 2px;
+}
+
+/* ──────────────────────────────────────────────
+   Accessibility: Reduced Motion
+   ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+	.lmsc-gte-animated-horizontal,
+	.lmsc-gte-animated-vertical,
+	.lmsc-gte-animated-diagonal,
+	.lmsc-gte-animated .lmsc-gte-highlight {
+		animation: none !important;
+	}
+}
+
+/* Windows High Contrast and other forced-color modes must never inherit
+   transparent text or decorative motion from the normal gradient state. */
+@media (forced-colors: active) {
+	.lmsc-gte-gradient-text,
+	.lmsc-gte-gradient-text-wrapper a,
+	.lmsc-gte-gradient-editor,
+	.lmsc-gte-highlight,
+	.lmsc-gte-dynamic-tag {
+		background: none !important;
+		-webkit-background-clip: unset !important;
+		background-clip: unset !important;
+		-webkit-text-fill-color: currentColor !important;
+		color: CanvasText !important;
+		animation: none !important;
+		filter: none !important;
+		-webkit-text-stroke-width: 0 !important;
+	}
+}
+
+/* ──────────────────────────────────────────────
+   Preset Gradient CSS Classes
+   Apply any of these classes to any Elementor
+   widget via Advanced > CSS Classes field.
+   ────────────────────────────────────────────── */
+
+.lmsc-gte-gradient-sunset { background: linear-gradient(90deg, #FF512F, #DD2476); }
+.lmsc-gte-gradient-ocean { background: linear-gradient(90deg, #2E3192, #1BFFFF); }
+.lmsc-gte-gradient-forest { background: linear-gradient(90deg, #11998e, #38ef7d); }
+.lmsc-gte-gradient-fire { background: linear-gradient(90deg, #f12711, #f5af19); }
+.lmsc-gte-gradient-purple-rain { background: linear-gradient(90deg, #7F00FF, #E100FF); }
+.lmsc-gte-gradient-cherry-blossom { background: linear-gradient(90deg, #FF6B9D, #C94C7C); }
+.lmsc-gte-gradient-northern-lights { background: linear-gradient(90deg, #43cea2, #185a9d); }
+.lmsc-gte-gradient-citrus { background: linear-gradient(90deg, #f7971e, #ffd200); }
+.lmsc-gte-gradient-frost { background: linear-gradient(90deg, #0052D4, #65C7F7); }
+.lmsc-gte-gradient-rose-gold { background: linear-gradient(90deg, #B76E79, #F4D4C8); }
+.lmsc-gte-gradient-midnight { background: linear-gradient(90deg, #0F2027, #2C5364); }
+.lmsc-gte-gradient-candy { background: linear-gradient(90deg, #D585FF, #00FFEE); }
+.lmsc-gte-gradient-neon { background: linear-gradient(90deg, #00ff87, #60efff); }
+.lmsc-gte-gradient-peach { background: linear-gradient(90deg, #FF9966, #FF5E62); }
+.lmsc-gte-gradient-royal { background: linear-gradient(90deg, #1A0533, #6441A5); }
+.lmsc-gte-gradient-bubblegum { background: linear-gradient(90deg, #ff6a88, #ff99ac); }
+.lmsc-gte-gradient-aurora { background: linear-gradient(90deg, #00C9FF, #92FE9D); }
+.lmsc-gte-gradient-cyber { background: linear-gradient(90deg, #f72585, #7209b7, #3a0ca3); }
+.lmsc-gte-gradient-warm-flame { background: linear-gradient(90deg, #FF6B35, #F7931E); }
+.lmsc-gte-gradient-mango { background: linear-gradient(90deg, #ffe259, #ffa751); }
+
+.lmsc-gte-gradient-sunset,
+.lmsc-gte-gradient-ocean,
+.lmsc-gte-gradient-forest,
+.lmsc-gte-gradient-fire,
+.lmsc-gte-gradient-purple-rain,
+.lmsc-gte-gradient-cherry-blossom,
+.lmsc-gte-gradient-northern-lights,
+.lmsc-gte-gradient-citrus,
+.lmsc-gte-gradient-frost,
+.lmsc-gte-gradient-rose-gold,
+.lmsc-gte-gradient-midnight,
+.lmsc-gte-gradient-candy,
+.lmsc-gte-gradient-neon,
+.lmsc-gte-gradient-peach,
+.lmsc-gte-gradient-royal,
+.lmsc-gte-gradient-bubblegum,
+.lmsc-gte-gradient-aurora,
+.lmsc-gte-gradient-cyber,
+.lmsc-gte-gradient-warm-flame,
+.lmsc-gte-gradient-mango {
+	color: var(--lmsc-gte-fallback-color, currentColor);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+	.lmsc-gte-gradient-sunset,
+	.lmsc-gte-gradient-ocean,
+	.lmsc-gte-gradient-forest,
+	.lmsc-gte-gradient-fire,
+	.lmsc-gte-gradient-purple-rain,
+	.lmsc-gte-gradient-cherry-blossom,
+	.lmsc-gte-gradient-northern-lights,
+	.lmsc-gte-gradient-citrus,
+	.lmsc-gte-gradient-frost,
+	.lmsc-gte-gradient-rose-gold,
+	.lmsc-gte-gradient-midnight,
+	.lmsc-gte-gradient-candy,
+	.lmsc-gte-gradient-neon,
+	.lmsc-gte-gradient-peach,
+	.lmsc-gte-gradient-royal,
+	.lmsc-gte-gradient-bubblegum,
+	.lmsc-gte-gradient-aurora,
+	.lmsc-gte-gradient-cyber,
+	.lmsc-gte-gradient-warm-flame,
+	.lmsc-gte-gradient-mango {
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+}

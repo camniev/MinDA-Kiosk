@@ -1,0 +1,149 @@
+/**
+ * Opt-in gradients for Elementor native Heading, Text Editor, and Button.
+ *
+ * Per-element values are emitted by Elementor as CSS custom properties.
+ * This shared file contains the explicit, reviewed target selector allowlist.
+ *
+ * @package LMSC_GTE
+ * @since   2.0.0
+ */
+
+.lmsc-gte-native-enabled-yes {
+	--lmsc-gte-native-preset-colors: #FF512F, #DD2476;
+	--lmsc-gte-native-brand-gradient: linear-gradient(90deg, #FF512F, #DD2476);
+	--lmsc-gte-native-color-1: #FF512F;
+	--lmsc-gte-native-color-2: #DD2476;
+	--lmsc-gte-native-hover-color-1: #11998E;
+	--lmsc-gte-native-hover-color-2: #38EF7D;
+	--lmsc-gte-native-active-colors: var(--lmsc-gte-native-preset-colors);
+	--lmsc-gte-native-angle: 90deg;
+	--lmsc-gte-native-gradient: linear-gradient(var(--lmsc-gte-native-angle), var(--lmsc-gte-native-active-colors));
+	--lmsc-gte-native-hover-gradient: linear-gradient(var(--lmsc-gte-native-angle), var(--lmsc-gte-native-hover-color-1), var(--lmsc-gte-native-hover-color-2));
+	--lmsc-gte-native-fallback: #333333;
+	--lmsc-gte-native-effect-fill: transparent;
+	--lmsc-gte-native-transition: 0.3s;
+	--lmsc-gte-native-animation-name: lmsc-gte-native-flow-horizontal;
+	--lmsc-gte-native-animation-speed: 5s;
+	--lmsc-gte-native-animation-easing: ease;
+	--lmsc-gte-native-animation-iterations: infinite;
+}
+
+.lmsc-gte-native-enabled-yes.lmsc-gte-native-source-custom {
+	--lmsc-gte-native-active-colors: var(--lmsc-gte-native-color-1), var(--lmsc-gte-native-color-2);
+}
+
+.lmsc-gte-native-enabled-yes.lmsc-gte-native-type-radial {
+	--lmsc-gte-native-gradient: radial-gradient(circle, var(--lmsc-gte-native-active-colors));
+	--lmsc-gte-native-hover-gradient: radial-gradient(circle, var(--lmsc-gte-native-hover-color-1), var(--lmsc-gte-native-hover-color-2));
+}
+
+.lmsc-gte-native-enabled-yes.lmsc-gte-native-type-conic {
+	--lmsc-gte-native-gradient: conic-gradient(from var(--lmsc-gte-native-angle), var(--lmsc-gte-native-active-colors));
+	--lmsc-gte-native-hover-gradient: conic-gradient(from var(--lmsc-gte-native-angle), var(--lmsc-gte-native-hover-color-1), var(--lmsc-gte-native-hover-color-2));
+}
+
+.lmsc-gte-native-enabled-yes.lmsc-gte-native-source-brand {
+	--lmsc-gte-native-gradient: var(--lmsc-gte-native-brand-gradient);
+}
+
+/* Exact target allowlist. No generic descendant selector is used. */
+.elementor-widget-heading.lmsc-gte-native-enabled-yes .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes .elementor-heading-title > a,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes .elementor-text-editor,
+.elementor-widget-button.lmsc-gte-native-enabled-yes .elementor-button-text {
+	color: var(--lmsc-gte-native-fallback) !important;
+	background-image: var(--lmsc-gte-native-gradient);
+	background-repeat: no-repeat;
+	transition: background var(--lmsc-gte-native-transition) ease;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes .elementor-heading-title,
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes .elementor-heading-title > a,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes > .elementor-widget-container,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes .elementor-text-editor,
+	.elementor-widget-button.lmsc-gte-native-enabled-yes .elementor-button-text {
+		-webkit-background-clip: text !important;
+		background-clip: text !important;
+		-webkit-text-fill-color: var(--lmsc-gte-native-effect-fill) !important;
+		color: var(--lmsc-gte-native-effect-fill) !important;
+	}
+}
+
+/* Apply hover/focus to the whole widget so a Button changes across its full hit area. */
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:hover .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:hover .elementor-heading-title > a,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:focus-within .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:focus-within .elementor-heading-title > a,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:hover > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:focus-within > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:hover .elementor-text-editor,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:focus-within .elementor-text-editor,
+.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:hover .elementor-button-text,
+.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-hover-yes:focus-within .elementor-button-text {
+	background-image: var(--lmsc-gte-native-hover-gradient);
+}
+
+@keyframes lmsc-gte-native-flow-horizontal {
+	0%, 100% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+}
+
+@keyframes lmsc-gte-native-flow-vertical {
+	0%, 100% { background-position: 50% 0%; }
+	50% { background-position: 50% 100%; }
+}
+
+@keyframes lmsc-gte-native-flow-diagonal {
+	0%, 100% { background-position: 0% 0%; }
+	50% { background-position: 100% 100%; }
+}
+
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes .elementor-heading-title > a,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes .elementor-text-editor,
+.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes .elementor-button-text {
+	background-size: 200% 200%;
+	animation-name: var(--lmsc-gte-native-animation-name);
+	animation-duration: var(--lmsc-gte-native-animation-speed);
+	animation-timing-function: var(--lmsc-gte-native-animation-easing);
+	animation-iteration-count: var(--lmsc-gte-native-animation-iterations);
+}
+
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:hover .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:hover .elementor-heading-title > a,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:focus-within .elementor-heading-title,
+.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:focus-within .elementor-heading-title > a,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:hover > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:focus-within > .elementor-widget-container,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:hover .elementor-text-editor,
+.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:focus-within .elementor-text-editor,
+.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:hover .elementor-button-text,
+.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-animation-yes.lmsc-gte-native-pause-yes:focus-within .elementor-button-text {
+	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-reduced-motion-yes .elementor-heading-title,
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-reduced-motion-yes .elementor-heading-title > a,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-reduced-motion-yes > .elementor-widget-container,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-reduced-motion-yes .elementor-text-editor,
+	.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-reduced-motion-yes .elementor-button-text {
+		animation: none !important;
+	}
+}
+
+@media (forced-colors: active) {
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-forced-colors-yes .elementor-heading-title,
+	.elementor-widget-heading.lmsc-gte-native-enabled-yes.lmsc-gte-native-forced-colors-yes .elementor-heading-title > a,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-forced-colors-yes > .elementor-widget-container,
+	.elementor-widget-text-editor.lmsc-gte-native-enabled-yes.lmsc-gte-native-forced-colors-yes .elementor-text-editor,
+	.elementor-widget-button.lmsc-gte-native-enabled-yes.lmsc-gte-native-forced-colors-yes .elementor-button-text {
+		background-image: none !important;
+		-webkit-text-fill-color: CanvasText !important;
+		color: CanvasText !important;
+		forced-color-adjust: auto;
+	}
+}
