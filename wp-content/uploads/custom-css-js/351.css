@@ -37,5 +37,9 @@
     border-radius: 16px;
     box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.16);
     border: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+.minda-kiosk-post-title {
+	pointer-events: none;
 }</style>
 <!-- end Simple Custom CSS and JS -->
